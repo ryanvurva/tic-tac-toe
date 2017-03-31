@@ -7,3 +7,11 @@
     -webkit-font-smoothing: subpixel-antialiased;
   }
 }
+
+@mixin fullScreen {
+  height: 100%;
+
+  body {
+    min-height: 100%;
+  }
+}

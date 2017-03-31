@@ -1,14 +1,82 @@
 @import 'utility';
-
 $base-text-size: 16px;
 $base-font-family: sans-serif;
 
 html {
-  text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    @include fullScreen;
 }
 
 body {
-  @include font-smoothing(on);
-  margin: 0;
-  font: $base-text-size / 1 $base-font-family;
+    @include font-smoothing(on);
+    margin: 0;
+    font: $base-text-size / 1 $base-font-family;
+    font-family: 'Nova Oval', cursive;
+    background-image: url('https://static1.comicvine.com/uploads/original/13/132327/2917921-winterfell_house_stark_24507794_1280_720.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+main {
+    display: flex;
+    // flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 100px auto;
+}
+
+.gameboard {
+    // background-color: gray;
+
+    tr {
+        margin: 0;
+    }
+
+    td {
+        width: 150px;
+        height: 150px;
+        border: 2px solid #fff;
+        // margin: 0;
+        text-align: center;
+        font-size: 5em;
+    }
+}
+
+.clicked {
+
+}
+// modal for wins
+.overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: hsla(0, 0%, 0%, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body:not(.modal) .overlay {
+    display: none;
+}
+
+body.modal main {
+    filter: blur(5px);
+}
+
+.dialog {
+    background-color: white;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 20px #333;
 }
