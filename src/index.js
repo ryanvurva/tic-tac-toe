@@ -1,12 +1,14 @@
 if (process.env.NODE_ENV !== 'production') require('./index.html')
 import './styles/screen.scss'
 
+const statements = ['Hear my words, and bear witness to my vow.', 'Night gathers, and now my watch begins. It shall not end until my death.', 'I shall take no wife, hold no lands, father no children.', 'I shall wear no crowns and win no glory. I shall live and die at my post.', 'I am the sword in the darkness. I am the watcher on the walls. I am the shield that guards the realms of men.', 'I pledge my life and honor to the Night\'s Watch, for this night and all the nights to come.', 'You knelt as boys.  Rise now as Men of the Night\'s Watch.', '--The Night\'s Watch Oath', 'Spoken by Jon Snow to the Old Gods']
+let currentStatement = 0
 const $ = s => document.querySelector(s)
 const $$ = s => document.querySelectorAll(s)
 const $$$ = s => document.getElementById(s)
 const body = $('body')
-const x = 'X'
-const o = 'O'
+// const x = 'X'
+// const o = 'O'
 const cell1 = $$$('1')
 const cell2 = $$$('2')
 const cell3 = $$$('3')
@@ -41,8 +43,7 @@ for (let i = 0; i < move.length; i++) {
         setTimeout(() => {
           gameOver(true)
           $('body').className += 'modal'
-        }, 200)
-        // body.className += 'modal'
+        }, 1000)
       }
     }
     if (!winner) {
@@ -51,15 +52,33 @@ for (let i = 0; i < move.length; i++) {
         currentTurn = 'O'
         warrior.textContent = "Ramsay Bolton's turn"
         move[i].className = 'clickedX'
+        console.log(statements[currentStatement % statements.length])
+        currentStatement += 1
       } else {
         currentTurn = 'X'
         warrior.textContent = "Jon Snow's turn"
         move[i].className = 'clickedO'
+        console.log(statements[currentStatement % statements.length])
+        currentStatement += 1
       }
     }
+    // for (let i = 0; i < possibleWins.length; i++) {
+    //   if (possibleWins[i][0].textContent === currentTurn &&
+    //   possibleWins[i][1].textContent === currentTurn &&
+    // possibleWins[i][2].textContent === currentTurn) {
+    //     warrior.textContent = `${currentTurn} Wins!`
+    //     winner = true
+    //     setTimeout(() => {
+    //       gameOver(true)
+    //       $('body').className += 'modal'
+    //     }, 2000)
+    //   }
+    // }
     if (counter >= 9) {
-      $('body').className += 'modal'
-      $('.dialog h3').textContent = 'You both have lived to fight another day.'
+      $('.dialog h3').textContent = 'You have both lived to fight another day.'
+      setTimeout(() => {
+        $('body').className = 'modal'
+      }, 2000)
     }
   })
 }
@@ -67,18 +86,22 @@ for (let i = 0; i < move.length; i++) {
 // modal
 const gameOver = () => {
   if (currentTurn === 'X') {
-    $('.dialog h3').textContent = 'Congratulations, Jon Snow.  Winterfell is yours!'
+    $('.dialog h3').textContent = 'Congratulations, Jon Snow.  You\'re the King of the North!'
+    $('.dialog h4').textContent = 'Winterfell is Yours!'
   } else {
-    $('.dialog h3').textContent = 'You know nothing Jon Snow...  like how to zig-zag'
+    $('.dialog h3').textContent = 'You know nothing Jon Snow...  Rickon is dead.'
+    $('.dialog h4').textContent = 'If he would have just serpentined.'
   }
   setTimeout(() => {
     $('body').className = 'modal'
-  }, 200)
+  }, 1000)
 }
 
 const resetGame = () => {
-  body.className = ' '
-  window.location.reload()
+  setTimeout(() => {
+    body.className = ' '
+    window.location.reload()
+  }, 200)
 }
 
 const main = () => {

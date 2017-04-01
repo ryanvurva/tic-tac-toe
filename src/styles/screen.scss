@@ -19,7 +19,7 @@ body {
     background-size: cover;
 }
 
-h1, h2 {
+h1, h2, h4 {
     text-align: center;
 }
 
@@ -41,17 +41,55 @@ main {
     td {
         width: 150px;
         height: 150px;
-        border: 2px solid #fff;
-        // margin: 0;
+        border: 1px solid #fff;
         text-align: center;
         font-size: 5em;
+        color: transparent;
     }
 }
 
-.clicked {
-
+.clickedX {
+  // background-image: url('https://d30y9cdsu7xlg0.cloudfront.net/png/12864-200.png');
+  background-image: url('http://icons.iconarchive.com/icons/limav/game-of-thrones/512/Stark-icon.png');
+  background-size: contain;
+  animation-name: appear, fadeIn;
+  animation-duration: 1s, 3s;
+  animation-iteration-count: 1;
 }
-// modal for wins
+@keyframes appear {
+  0% {background-size: 0%;
+    background-repeat: no-repeat;
+    background-position: center;}
+    100% {background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center;}
+}
+@keyframes fadeIn {
+  0% {opacity: 0.1;}
+  100% {opacity: 1;}
+}
+
+.clickedO {
+  // background-image: url('https://d30y9cdsu7xlg0.cloudfront.net/png/177984-200.png');
+  background-image: url('http://vignette1.wikia.nocookie.net/gameofthrones/images/d/dd/House-Bolton-Main-Shield.PNG/revision/latest?cb=20161231131431');
+  // background-size: 75%;
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation-name: appear2, fadeIn;
+  animation-duration: 1s, 3s;
+  animation-iteration-count: 1;
+}
+@keyframes appear2 {
+  0% {background-size: 0%;
+      background-repeat: no-repeat;
+      background-position: center;}
+  100% {background-size: 70%;
+        background-repeat: no-repeat;
+        background-position: center;}
+}
+
+// modal
 .overlay {
     position: fixed;
     top: 0;
@@ -73,10 +111,46 @@ body.modal main {
 }
 
 .dialog {
-    background-color: white;
+    color: #fff;
+    background-color: hsla(60, 0%, 25%, 0.9);
     padding: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 0 20px #333;
+    border-radius: 3px;
+    box-shadow: 5px 5px 15px black;
+
+    h4 {
+      margin: 10px auto;
+    }
+}
+
+button {
+  font-family: 'Nova Oval', cursive;
+  font-weight: bold;
+  font-size: 2em;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  border: 2px solid black;
+  border-radius: 3px;
+  background-color:  hsl(60, 0%, 25%);
+  text-shadow: 2px 2px 0 hsla(60, 0%, 48%, 0.9);
+  box-shadow: 2px 2px 5px hsla(60, 0%, 48%, 0.9);
+  color: black;
+  transition: all 50ms linear;
+}
+
+button:focus {
+  outline: none;
+  border-color: black;
+}
+
+button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 5px hsla(60, 0%, 48%, 0.9);
+}
+
+button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0.1em hsla(60, 0%, 48%, 0.9);
 }
