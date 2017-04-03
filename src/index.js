@@ -71,14 +71,14 @@ for (let i = 0; i < move.length; i++) {
     //     setTimeout(() => {
     //       gameOver(true)
     //       $('body').className += 'modal'
-    //     }, 2000)
+    //     }, 1000)
     //   }
     // }
     if (counter >= 9) {
       $('.dialog h3').textContent = 'You have both lived to fight another day.'
       setTimeout(() => {
         $('body').className = 'modal'
-      }, 2000)
+      }, 500)
     }
   })
 }
@@ -94,7 +94,7 @@ const gameOver = () => {
   }
   setTimeout(() => {
     $('body').className = 'modal'
-  }, 1000)
+  }, 500)
 }
 
 const resetGame = () => {
